@@ -1,0 +1,11 @@
+[package]
+name = "xi-core"
+version = "0.2.0"
+license = "Apache-2.0"
+authors = ["Raph Levien <raph@google.com>"]
+description = "Main process for xi-core, based on json-rpc"
+repository = "https://github.com/google/xi-editor"
+
+[dependencies]
+xi-core-lib = { git = "https://github.com/cbrewster/xi-editor.git", branch = "lib" }
+xi-rpc = { git = "https://github.com/cbrewster/xi-editor.git", branch = "lib" }

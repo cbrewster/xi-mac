@@ -8,7 +8,7 @@ set -e
 
 function build_target () {
     TARGET_NAME="$1"
-    cd "${SRCROOT}/xi-editor/$2"
+    cd "${SRCROOT}/rust/$2"
     if [[ ${ACTION:-build} = "build" ]]; then
         if [[ $PLATFORM_NAME = "" ]]; then
             # default for building with xcodebuild
@@ -44,7 +44,7 @@ function build_target () {
                 RUST_ARCH="aarch64"
             fi
             cargo build $RUST_CONFIGURATION_FLAG --target "${RUST_ARCH}-apple-${RUST_TARGET_OS}"
-            EXECUTABLES+=("target/${RUST_ARCH}-apple-${RUST_TARGET_OS}/${RUST_CONFIGURATION}/${TARGET_NAME}")
+            EXECUTABLES+=("../target/${RUST_ARCH}-apple-${RUST_TARGET_OS}/${RUST_CONFIGURATION}/${TARGET_NAME}")
         done
 
         mkdir -p "${BUILT_PRODUCTS_DIR}"
@@ -55,8 +55,8 @@ function build_target () {
     fi
 }
 
-build_target xi-core rust
-build_target xi-syntect-plugin rust/syntect-plugin
+build_target xi-core core
+build_target xi-syntect-plugin syntect-plugin
 
 # workaround for https://github.com/travis-ci/travis-ci/issues/6522
 set +e

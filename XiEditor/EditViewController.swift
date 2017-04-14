@@ -160,6 +160,7 @@ class EditViewController: NSViewController, EditViewDataSource {
     override func mouseDragged(with theEvent: NSEvent) {
         editView.autoscroll(with: theEvent)
         let dragPosition = editView.bufferPositionFromPoint(theEvent.locationInWindow)
+        Swift.print("line num: \(dragPosition.line)")
         if let last = lastDragPosition, last != dragPosition {
             lastDragPosition = dragPosition
             let flags = theEvent.modifierFlags.rawValue >> 16
